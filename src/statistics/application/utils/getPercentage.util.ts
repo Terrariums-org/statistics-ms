@@ -3,9 +3,8 @@ export const getPercentage = (
   min: number,
   value: number,
 ): string => {
-  const midPoint = (max + min) / 2;
-
-  const result = (value * 100) / midPoint;
-
-  return `${result.toFixed(0)}%`;
+  if (value < min) return '0%';
+  const rangeTotal = max - min;
+  const percentage = ((value - min) / rangeTotal) * 100;
+  return `${percentage.toFixed(0)}%`;
 };
